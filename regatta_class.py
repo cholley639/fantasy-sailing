@@ -45,6 +45,20 @@ class FR_Regatta:
 	def num_races(self):
 		return ws.num_races(self.soupFS)
 
+	
+
+def TR_Regatta:
+
+	def __init__(self, link):
+		self.link = link
+		tmp = link.split("/")
+		tmp = filter(None, tmp)
+		self.season = str(tmp[2])
+		self.name = str(tmp[3])
+
+
+		self.soupFS = ws.import_page(self.season, self.name, "full-scores")
+
 
 
 if __name__ == '__main__':

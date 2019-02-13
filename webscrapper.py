@@ -28,6 +28,19 @@ Possible useful classes - FULL-SCORES PAGE
 
 from bs4 import BeautifulSoup
 import requests
+import re
+
+
+
+
+school_name_dict = {'Bulldogs': 'Yale University', 'Hawks': 'Roger Williams University', 'Eagles':'Boston College', 
+				'Big Green':'Dartmouth College', 'Bears':['Brown University', 'U. S. Coast Guard Academy'], 
+				'Engineers':'Massachusetts Institute of Technology', 
+				'Polar Bears':'Bowdoin College', 'Terriers': 'Boston University', 'Crimson':'Harvard University',
+				'Camels':'Connecticut College', 'Jumbos':'Tufts University', 'Catamounts':'University of Vermont',
+				'Rams':'University of Rhode Island', 'Huskies':'Northeastern University'}
+
+
 
 def import_page(season, regatta, **kwargs):
 	if ('div' in kwargs):
@@ -82,6 +95,19 @@ def get_teams_list(soup):
 
 	for teams in soup.find_all(class_='schoolname'):
 		name = teams.text
+		print name
+		teams_list.append(name)
+
+	return teams_list
+
+
+def get_TR_teams(soup):
+
+	teams_list = []
+
+	for teams in soup.find_all(class_='teamname'):
+		name = teams.text
+		print name
 		teams_list.append(name)
 
 	return teams_list
@@ -91,7 +117,13 @@ def get_teams_list(soup):
 
 
 if __name__ == '__main__':
-	soup = import_page("s18", "friis-team-race")
+	soup = import_page("s17", "new-england-team-race-fowle")
+	soupA = import_page("f18", "78th-schell", div="A")
 
+
+	mascot_list = get_TR_teams(soup)
+	print "--------"
+
+	teams_list = get_teams_list(soupA)
 
 
