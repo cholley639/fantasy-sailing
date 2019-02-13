@@ -8,15 +8,18 @@ fantasy-sailing
 Practice using beautifulsoup to make a web scrapper
 
 
-possible useful classes
+Possible useful classes - DIVISIONAL PAGE
 
-table class="results coordinate division A"
+ * table class="results coordinate division A"
 
-class="schoolname"
+ * class="schoolname"
 
-class="sailor-name skipper"
+ * class="sailor-name skipper"
 
-class="totalcell"
+ * class="totalcell"
+
+Possible useful classes - FULL-SCORES PAGE
+ * class="right"
 
 
 
@@ -27,12 +30,31 @@ from bs4 import BeautifulSoup
 import requests
 
 def import_page(season, regatta, div):
+
 	unique_string = season + "/" + regatta + "/" + div + "/"
 	r = requests.get("http://scores.collegesailing.org/" + unique_string)
 	data = r.text
 	soup = BeautifulSoup(data, "lxml")
 
 	return soup
+
+
+def num_races(soup):
+
+	num_races_list = []
+
+	for races in soup.find_all(class_="right"):
+
+		race_num = races.text
+
+		if race_num == u'TOT':
+			return len(num_races_list)
+
+		num_races_list.append(race_num)
+
+	return "ERROR COULDN'T FIND NUM_RACES"
+
+
 
 
 def get_scores_list(soup):
@@ -62,12 +84,10 @@ def get_teams_list(soup):
 
 
 if __name__ == '__main__':
-    soup = import_page("f18", "coed-showcase", "A")
+    soup = import_page("f18", "coed-showcase", "full-scores")
+    num_races = num_races(soup)
 
-    scores_list = get_scores_list(soup)
-    teams_list = get_teams_list(soup)
-
-    print len(teams_list)
+    print num_races
 
 
 
