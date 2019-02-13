@@ -29,15 +29,22 @@ Possible useful classes - FULL-SCORES PAGE
 from bs4 import BeautifulSoup
 import requests
 
-def import_page(season, regatta, div):
+def import_page(season, regatta, **kwargs):
+	if ('div' in kwargs):
+		unique_string = season + "/" + regatta + "/" + kwargs['div'] + "/"
+		r = requests.get("http://scores.collegesailing.org/" + unique_string)
+		data = r.text
+		soup = BeautifulSoup(data, "lxml")
 
-	unique_string = season + "/" + regatta + "/" + div + "/"
-	r = requests.get("http://scores.collegesailing.org/" + unique_string)
-	data = r.text
-	soup = BeautifulSoup(data, "lxml")
+		return soup
 
-	return soup
+	else:
+		unique_string = season + "/" + regatta + "/"
+		r = requests.get("http://scores.collegesailing.org/" + unique_string)
+		data = r.text
+		soup = BeautifulSoup(data, "lxml")
 
+		return soup
 
 def num_races(soup):
 
@@ -84,12 +91,7 @@ def get_teams_list(soup):
 
 
 if __name__ == '__main__':
-    soup = import_page("f18", "coed-showcase", "full-scores")
-    num_races = num_races(soup)
-
-    print num_races
-
-
+	soup = import_page("s18", "friis-team-race")
 
 
 
