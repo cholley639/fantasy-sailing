@@ -1,4 +1,4 @@
-# fantasy-sailing
+# Fantasy College Sailing
 
 ## Drafting
 
@@ -17,3 +17,10 @@ Also need to include
 
 Interesting link - NEISA SCORING GUIDE
 * https://neisa.collegesailing.org/documents/NEISA_Performance_Ranking_System_Guide.pdf
+
+## Parsing and Reading Data
+Parsing is going to be really annoying because each regatta page has a unique link name. For example the Co-ed Showcase regatta has name "/coed-showcase/". The Captain Hurst has the name "/captain-hurst-bowl/", the Danmark Trophy is "/danmark/", etc.
+
+Thinking we might have to input a schedule ahead of time, and guess the the names of the regatta pages, or update them each week.
+
+
