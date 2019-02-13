@@ -6,10 +6,14 @@ Current thought is that we will start with a fixed league size, say 6. Members o
 
 League members will draft x number of team race teams, and y number of diviosonal teams. By divisional teams I mean, for example, "Tufts A", or "MIT B". Current thinking is 2 or 3 TR teams (x), 5 or 6 divisional teams (y) where 1 of the TR teams is on the bench and 1 or 2 of the divisonal teams are also on the bench.
 
+Draft a womens division or two as well.
+
 
 ## Scoring
 ### Divisional Scoring (Fleet Racing)
 Scores for each divisional team will be based on the average score per race. However, we need to figure out some way to factor in the number of teams entered in the regatta. So someone who gets 1st and averages 3rd in an 18 boat regatta should receive more points than someoen who gets 1st and averages 3rd in a 14 boat regatta.
+
+Also need to include 
 
 Interesting link - NEISA SCORING GUIDE
 * https://neisa.collegesailing.org/documents/NEISA_Performance_Ranking_System_Guide.pdf
