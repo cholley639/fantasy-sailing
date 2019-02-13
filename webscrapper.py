@@ -6,21 +6,48 @@ Feb 12 2019
 fantasy-sailing
 
 Practice using beautifulsoup to make a web scrapper
-"""
 
+
+possible useful classes
+
+table class="results coordinate division A"
+
+class="schoolname"
+
+class="sailor-name skipper"
+
+class="totalcell"
+
+"""
 
 from bs4 import BeautifulSoup
 import requests
 
-
-
-def get_div_scores(season, regatta, div):
-	r = requests.get("http://scores.collegesailing.org/" + season + regatta)
+def import_page(season, regatta, div):
+	unique_string = season + "/" + regatta + "/" + div + "/"
+	r = requests.get("http://scores.collegesailing.org/" + unique_string)
 	data = r.text
-	soup = BeautifulSoup(data)
+	soup = BeautifulSoup(data, "lxml")
+
+	return soup
+
+
+def get_scores_list(soup):
+
+	scores_list = []
+
+	for scores in soup.find_all(class_='totalcell'):
+
+		num = scores.text
+		scores_list.append(num)
+
+	return scores_list
 
 
 
 if __name__ == '__main__':
-    get_div_scores(f18, coed-showcase, A)
-    
+    soup = import_page("f18", "coed-showcase", "A")
+
+    scores_list = get_scores_list(soup)
+    print scores_list 
+
