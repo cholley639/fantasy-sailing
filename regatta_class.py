@@ -12,7 +12,6 @@ Cameron Holley
 import math
 import os
 import numpy as np 
-from bs4 import BeautifulSoup
 import webscrapper as ws
 
 
@@ -105,9 +104,6 @@ class FR_Regatta:
 if __name__ == '__main__':
 	url = "https://scores.collegesailing.org/f18/coed-showcase/"
 	cpt_hurst = FR_Regatta(url)
-	print cpt_hurst.score_listB()
-	print cpt_hurst.score_listA()
-	print cpt_hurst.num_races()
 
 
 	
