@@ -49,16 +49,18 @@ def main(url, csv_file='temp.csv'):
         if 'topborder' in row['class']:
             curr_data = {}
 
-        for field in row.find_all('td')[:-4]:
-            if field.text.strip():
-                curr_data[''.join(field['class'])] = field.text.strip()
+        if 'reserves-row' not in row['class']:
 
-        for field, name in zip(row.find_all('td')[-4:], field_names):
-            if field.text.strip() or name not in curr_data:
-                curr_data[name] = field.text.strip()
+            for field in row.find_all('td')[:-4]:
+                if field.text.strip():
+                    curr_data[''.join(field['class'])] = field.text.strip()
 
-        new_list = sort_data(list(curr_data.values()))
-        data.append(new_list)
+            for field, name in zip(row.find_all('td')[-4:], field_names):
+                if field.text.strip() or name not in curr_data:
+                    curr_data[name] = field.text.strip()
+
+            new_list = sort_data(list(curr_data.values()))
+            data.append(new_list)
 
     write_to_csv(csv_file, headers, data)
 
