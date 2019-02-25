@@ -21,12 +21,14 @@ from bs4 import BeautifulSoup
 import csv
 import sailors_scrapper
 
-def main(url):
-	sailor_matrix = sailors_scrapper.sailors_matrix(url)
+def main(scores_url, sailors_url):
+	sailor_matrix = sailors_scrapper.sailors_matrix(sailors_url)
+
+	scores_matrix = 
 
 if __name__ == '__main__':
     regatta_name = 'thompson'
-    techscore_url = 'https://scores.collegesailing.org/s18/{}/sailors/'.format(regatta_name)
-    main(techscore_url)
-
+    sailors_url = 'https://scores.collegesailing.org/s18/{}/{}/'.format(regatta_name, 'sailors')
+    scores_url = 'https://scores.collegesailing.org/s18/{}/{}/'.format(regatta_name, 'full-scores')
+    main(scores_url, sailors_url)
 
