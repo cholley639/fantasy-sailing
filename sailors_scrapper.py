@@ -67,7 +67,7 @@ def sailors_matrix(url):
     return data
 
 
-def main(url, csv_file='temp.csv'):
+def main(url, csv_file='sailors.csv'):
     raw_html = get_html_from_url(url)
     soup = BeautifulSoup(raw_html, 'html.parser')
 
