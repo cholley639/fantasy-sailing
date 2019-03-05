@@ -15,10 +15,10 @@ There will be 8 starting sailors, and the other 4 will be on the bench. Substitu
 ## Scoring Algorithms
 ### Fleet Racing
 The score for each sailor on a given weekend will be based on the following inputs:
-* Regatta level (A, B, C, other)
-* Number of races sailed
-* Number of teams entered
-* Place in each race
+* Regatta level {A, B, C, other}
+* Number of races sailed [0, # of teams]
+* Number of teams entered [2, 18]
+* Place in each race [1, # of teams]
 
 Algorithm will be determined after league pool data is scraped and compiled from web.
 
