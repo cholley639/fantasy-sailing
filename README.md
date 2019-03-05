@@ -1,6 +1,6 @@
 # Fantasy College Sailing
 
-##Current Status
+## Current Status
 
 So far, this repository has the webscrappings tools for fleet race regattas. It can successfully pull the sailors page and full-scores page of any regatta on the techscore website. The next step is combining the two pages to be uploaded to the league pool database.
 
