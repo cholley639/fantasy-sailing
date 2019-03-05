@@ -4,14 +4,14 @@ import csv
 
 def sort_data(arr):
     new_arr = []
-    new_arr.append(arr[2])
-    new_arr.append(arr[3])
-    new_arr.append(arr[7])
-    new_arr.append(arr[1])
-    new_arr.append(arr[6])
-    new_arr.append(arr[5])
-    new_arr.append(arr[4])
-    new_arr.append(arr[0])
+    new_arr.extend(arr[2], arr[3], arr[7], arr[1], arr[6], arr[5], arr[4], arr[0])
+    #new_arr.append(arr[3])
+    #new_arr.append(arr[7])
+    #new_arr.append(arr[1])
+    #new_arr.append(arr[6])
+    #new_arr.append(arr[5])
+    #new_arr.append(arr[4])
+    #new_arr.append(arr[0])
 
     return new_arr
 
