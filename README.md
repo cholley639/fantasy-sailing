@@ -22,8 +22,9 @@ The score for each sailor on a given weekend will be based on the following inpu
 
 Algorithm will be determined after league pool data is scraped and compiled from web.
 
-Interesting link - NEISA SCORING GUIDE
-* https://neisa.collegesailing.org/documents/NEISA_Performance_Ranking_System_Guide.pdf
+Interesting links
+* NEISA SCORING GUIDE - https://neisa.collegesailing.org/documents/NEISA_Performance_Ranking_System_Guide.pdf
+* Techscore homepage - https://scores.collegesailing.org/
 
 ## Parsing and Reading Data
 Parsing is going to be really annoying because each regatta page has a unique link name. For example the Co-ed Showcase regatta has name "/coed-showcase/". The Captain Hurst has the name "/captain-hurst-bowl/", the Danmark Trophy is "/danmark/", etc.
