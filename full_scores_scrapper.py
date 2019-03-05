@@ -30,6 +30,8 @@ def scores_matrix(url):
     temp_header2 = scores_table.find('thead').find('tr').find_all('th')[-1:]
     scores_headers = temp_header1 + temp_header2
     headers = [ele.text.strip() for ele in scores_headers]
+    headers.append("Regatta")
+    reg_name = soup.find('span', attrs={'itemprop': 'name'}).text
 
     #add name to headers rank
 
@@ -51,7 +53,9 @@ def scores_matrix(url):
                     arr.append(ele.text)
                 count+=1
 
+            arr.append(reg_name)
             data.append(arr)
+            
     data.insert(0, headers)
 
     return data

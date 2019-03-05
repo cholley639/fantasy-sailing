@@ -33,6 +33,9 @@ def main(scores_url, sailors_url):
 	sailors_matrix = sailors_scrapper.sailors_matrix(sailors_url)
 	scores_matrix = full_scores_scrapper.scores_matrix(scores_url)
 
+	max_num_races = scores_matrix[0][-3]
+	print max_num_races
+
 	prev_skipper = ""
 	prev_crew = ""
 	for row in sailors_matrix[1:]:
