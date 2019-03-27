@@ -63,16 +63,19 @@ def scores_matrix(url):
     scores_headers = temp_header1 + temp_header2
     headers = [ele.text.strip() for ele in scores_headers]
     headers.append("Regatta")
+    headers.append('schoolref')
     reg_name = soup.find('span', attrs={'itemprop': 'name'}).text
 
     #add name to headers rank
 
     rows = scores_body.find_all('tr')
     teamname = ""
+    schoolref = None
     for row in rows:
         if 'totalrow' not in row['class']:
             if 'divA' in row['class']:
                 teamname = row.find_all('td')[2].text
+                schoolref = row.find_all('td')[2].find('a')['href']
 
             arr = []
             count=0
@@ -86,6 +89,7 @@ def scores_matrix(url):
                 count+=1
 
             arr.append(reg_name)
+            arr.append(schoolref)
             data.append(arr)
 
     data.insert(0, headers)
@@ -108,6 +112,7 @@ def main(url, csv_file='scores.csv'):
     scores_headers = temp_header1 + temp_header2
     headers = [ele.text.strip() for ele in scores_headers]
     headers.append("Regatta")
+    headers.append('schoolref')
     reg_name = soup.find('span', attrs={'itemprop': 'name'}).text
 
 
@@ -115,10 +120,12 @@ def main(url, csv_file='scores.csv'):
 
     rows = scores_body.find_all('tr')
     teamname = ""
+    schoolref = None
     for row in rows:
         if 'totalrow' not in row['class']:
             if 'divA' in row['class']:
                 teamname = row.find_all('td')[2].text
+                schoolref = row.find_all('td')[2].find('a')['href']
 
             arr = []
             count=0
@@ -132,6 +139,7 @@ def main(url, csv_file='scores.csv'):
                 count+=1
 
             arr.append(reg_name)
+            arr.append(schoolref)
 
             data.append(arr)
             #data.append([ele.text for ele in row.find_all('td')])
