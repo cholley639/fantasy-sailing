@@ -26,7 +26,7 @@ import re
 # converts string indicating what races were sailed to easier format
 def convert_races_string(s, scores_row):
     if not s:  # all races sailed
-        s_arr = scores_row[2:-2]
+        s_arr = scores_row[2:-3]
     else:
         s_arr = s.split(',')
 
@@ -38,30 +38,34 @@ def main(scores_url, sailors_url):
     sailors_matrix = sailors_scrapper.sailors_matrix(sailors_url)
     scores_matrix = full_scores_scrapper.scores_matrix(scores_url)
 
-    max_num_races = scores_matrix[0][-3]
-    reg_name = scores_matrix[1][-1]
+    max_num_races = scores_matrix[0][-4]
+    reg_name = scores_matrix[1][-2]
+    print max_num_races
+    print reg_name
 
     prev_skipper = ""
     prev_crew = ""
-    for row in sailors_matrix[1:]:
-        scores_row = []  # matches the correct scores for a given sailor from the scores_matrix
-        for iter_score_row in scores_matrix[1:]:
-            if iter_score_row[-1] == row[-1] and iter_score_row[1] == row[2]:
-                scores_row = iter_score_row
+    for iter_sailor_row in sailors_matrix[1:]:		# iterates through rows in the sailors csv matrix
+        match_score_row = []  							# creates empty row to be filled with the correct scores row for a given sailor(s)
+        for iter_score_row in scores_matrix[1:]:	# iterates through rows in the scores csv matrix
+            if iter_score_row[-1] == iter_sailor_row[0] and iter_score_row[1] == iter_sailor_row[2]: # matches the correct scores for a given sailor from the scores_matrix
+                match_score_row = iter_score_row									 				# first condition checks team, second checks division
                 break
-        print row[4], row[6], scores_row
 
-        if row[4] != prev_skipper and row[6] != prev_crew:  # new skipper and crew
-            skip_arr = [row[4], reg_name, row[1]]
-            crew_arr = [row[6], reg_name, row[1]]
+        if iter_sailor_row[5] != prev_skipper and iter_sailor_row[7] != prev_crew:  # new skipper and crew
+            skip_arr = [iter_sailor_row[5], reg_name, iter_score_row[-1]]		
+            crew_arr = [iter_sailor_row[7], reg_name, iter_score_row[-1]]
 
-            skip_races = convert_races_string(row[5], scores_row)
+            
 
-            crew_races = convert_races_string(row[7], scores_row)
-            # print skip_races
-            # print crew_races
+            skip_races = convert_races_string(iter_sailor_row[6], match_score_row)
 
-        elif row[4] != prev_skipper and row[6] == prev_crew:  # new skipper, same crew
+            crew_races = convert_races_string(iter_sailor_row[8], match_score_row)
+            print skip_races
+            print crew_races
+            
+
+        elif iter_sailor_row[5] != prev_skipper and iter_sailor_row[7] == prev_crew:  # new skipper, same crew
             skip_arr = []
 
         else:  # same skipper, new crew
