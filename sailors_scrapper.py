@@ -2,19 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-def sort_data(arr):
-    new_arr = []
-    new_arr.extend([arr[2], arr[3], arr[7], arr[1], arr[6], arr[5], arr[4], arr[0]])
-    #new_arr.append(arr[3])
-    #new_arr.append(arr[7])
-    #new_arr.append(arr[1])
-    #new_arr.append(arr[6])
-    #new_arr.append(arr[5])
-    #new_arr.append(arr[4])
-    #new_arr.append(arr[0])
-
-    return new_arr
-
 
 
 def get_html_from_url(url):
@@ -64,7 +51,6 @@ def sailors_matrix(url):
                     curr_data[name] = field.text.strip()
 
             new_list = [curr_data[key] for key in headerKeys]
-            #new_list = sort_data(list(curr_data.values())) + [schoolref]
             data.append(new_list)
 
     data.insert(0, headers)
@@ -105,7 +91,6 @@ def main(url, csv_file='sailors.csv'):
                 if field.text.strip() or name not in curr_data:
                     curr_data[name] = field.text.strip()
 
-            # new_list = sort_data(list(curr_data.values()))
             new_list = [curr_data[key] for key in headerKeys]
             data.append(new_list)
 
