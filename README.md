@@ -2,7 +2,11 @@
 
 ## Current Status
 
-So far, this repository has the webscrappings tools for fleet race regattas. It can successfully pull the sailors page and full-scores page of any regatta on the techscore website. The next step is combining the two pages to be uploaded to the league pool database.
+So far, this repository has the webscrappings tools for fleet race regattas. It can successfully pull the sailors page and full-scores page of any regatta on the techscore website. It also combines these two webscrappers to output a 2-d array with each row comprised of a unique sailor from the regatta with his/her information and results from the regatta. 0 indicates did not sail. 999 indicates BKD.
+
+### Next Step
+
+Scoring algorithm to determine fantasy points from weekend results
 
 ## Drafting
 
@@ -31,4 +35,6 @@ Each regatta page has a unique link name which will make full automation difficu
 
 Thinking we might have to input a schedule ahead of time, and guess the names of the regatta pages, or update them each week. Might be able to pull from icsa website.
 
+
+per_weekend.py uses the href link to a school's website rather than the school name because they are non-unique. For instance, Yale can be identified as "Yale" or "Yale University" but it's href link is always ".../schools/yale/..."
 
