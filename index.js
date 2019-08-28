@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 // See https://stackoverflow.com/questions/25471856/express-throws-error-as-body-parser-deprecated-undefined-extended
 app.use(bodyParser.urlencoded({ extended: true })); // Required if we need to use HTTP post parameters
 
-var cors = require('cors');
-app.use(cors());
+//var cors = require('cors');
+//app.use(cors());
 
 // Serve static content in folder named "public"
 app.use(express.static(path.join(__dirname, 'public')));
