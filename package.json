@@ -1,0 +1,26 @@
+{
+  "name": "fantasy-college-sailing",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "6.7.0"
+  },
+  "dependencies": {
+    "express": "latest",
+    "mongodb": "^2.2.33",
+    "validator": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cholley639/fantasy-sailing.git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
