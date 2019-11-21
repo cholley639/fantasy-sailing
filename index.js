@@ -5,16 +5,32 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var validator = require('validator');
 
-/* You shouldn't need to create a variable, just app.listen(process.env.PORT)
- * Also, you would usually create a .local.env file which contains the PORT
- * variable
- */
-const PORT = process.env.PORT;	//Proper syntax?
+
+const PORT = process.env.PORT;
 
 /* path is the package that does all kinds of file navigation commands.
  * See https://nodejs.org/api/path.html
  */
-const path = require('path')	//WHAT IS THIS
+const path = require('path')
+
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+//client.connect();
+
+/*
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+*/
 
 var app = express();
 // See https://stackoverflow.com/questions/5710358/how-to-get-post-query-in-express-node-js
