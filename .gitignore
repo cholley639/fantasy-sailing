@@ -5,4 +5,4 @@ __pycache__/
 *.csv
 .DS_Store
 extra/
-psql_practic.py
+psql_practice.py
