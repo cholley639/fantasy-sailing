@@ -19,6 +19,9 @@ def table_exists(regatta_name, con):
 	return exists_bool
 
 
+
+# creates an empty table with 18 race columns and name as regatta_name
+# params: regatta name, active connection to database
 def create_regatta_table(regatta_name, con):
 	cur = con.cursor()
 
@@ -35,6 +38,13 @@ def create_regatta_table(regatta_name, con):
 	cur.close()
 	return
 
+
+'''
+does not work - can't figure out a way to dynamically update a table
+for example, if only 3 races have been complete, how do you only update 3 race columns in the table
+
+Maybe use UPDATE instead of INSERT?
+'''
 def populate_empty_regatta_table(regatta_name, con, regatta_data):
 	num_race_cols = len(regatta_data[1]) - 4
 
