@@ -155,7 +155,7 @@ def main(scores_url, sailors_url, csv_file='weekend_results.csv'):
 			crew_output_arr = make_final_output_rows(curr_crew, iter_score_row[-1], reg_name, iter_sailor_row[3], crew_races)
 			output_matrix.append(crew_output_arr)
 
-	full_scores_scrapper.write_to_csv(csv_file, headers, output_matrix)
+	full_scores_scraper.write_to_csv(csv_file, headers, output_matrix)
 
 
 def regatta_matrix(scores_url, sailors_url):
